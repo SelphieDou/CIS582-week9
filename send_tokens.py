@@ -46,7 +46,7 @@ def send_tokens( receiver_pk, tx_amount ):
     receiver = receiver_pk
     unsigned_txn = PaymentTxn(sender_pk, params, receiver_pk, tx_amount)
     signed_txn = unsigned_txn.sign(mnemonic.to_private_key(mnemonic1))
-    txid = algod_client.send_transaction(signed_txn)
+    txid = acl.send_transaction(signed_txn)
     print("Successfully sent transaction with txID: {}".format(txid))
     
     return sender_pk, txid
